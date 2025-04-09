@@ -1,0 +1,34 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='col-md-6 mx-auto mx-auto border rounded-lg'>
+    <p class='mx-auto d-flex align-items-center'>
+        <h3>
+            <a href="{{ url_for('index_detail', fctid=fctid) }}"
+                class="mr-2 btn btn-success icon text-white py-2 px-1" style="font-size: 24px;">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+            </a>
+            Ajouter un détail à la facture
+        </h3>
+    </p>
+    <hr class="divider bg-white">
+    <form method='post' autocomplete='off'>
+        <div class='form-group'>
+            <label>Produit</label>
+            <select class="form-control form-control-sm" required name="produit_id">
+                <option selected disabled value="">[CHOISIR PRODUIT]</option>
+                {% for row in produits %}
+                <option value="{{ row.id }}">{{ row.nom }} ({{ row.prix }} F)</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Quantité</label>
+            <input required type='number' class='form-control form-control-sm' name='quantite' min="0">
+        </div>
+        <input required type='submit' name='submit' value='Valider' class='btn mt-4 w-100 btn-success'>
+    </form>
+</div>
+{% endblock %}

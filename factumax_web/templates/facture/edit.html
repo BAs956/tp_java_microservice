@@ -1,0 +1,20 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='col-md-6 mx-auto mx-auto border rounded-lg'>
+    <p class='mx-auto '>
+        <h3>Modifier cette facture</h3>
+    </p>
+    <hr class="divider bg-white">
+    <form method='post' autocomplete='off'>
+        <div class='form-group'>
+            <label>Client</label>
+            <select class="form-control form-control-sm" required name="client_id">
+                {% for row in clients %}
+                    <option value="{{ row.id }}" {% if row.id == data.id %} selected {% endif %}>{{ row.nom }} {{ row.prenom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input required type='submit' name='submit' value='Modifier' class='btn mt-4 w-100 btn-warning text-white'>
+    </form>
+</div>
+{% endblock %}

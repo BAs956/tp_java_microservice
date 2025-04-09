@@ -1,0 +1,45 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class="d-flex align-items-center justify-content-between">
+    <h3  >Liste des factures enregistrées</h3>
+    <p class='ml-auto'><a href='/add_facture' class='btn btn-success'>+ Ajouter</a></p>
+</div>
+<table class='table table-bordered table-striped'>
+    <thead>
+        <tr>
+            <th>NUM</th>
+            <th>Client</th>
+            <th>Nb Détails</th>
+            <th>Date</th>
+            <th>Détails</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if datas.__len__() == 0 %}
+        <tr><td class="text-center" colspan="8">Aucune facture trouvée</td></tr>
+        {% endif %}
+        {% for row in datas %}
+        <tr>
+            <td>FAC0000{{ row.id }}</td>
+            <td>{{ row['client']['nom'] }} {{ row['client']['prenom'] }}</td>
+            <td>{{ row['details'].__len__() }}</td>
+            <td>{{ row.date }}</td>
+            <td>
+                <a href='{{ url_for("index_detail",fctid=row.id) }}'
+                    class='btn btn-primary'>Détails</a>
+            </td>
+            <td>
+                <a href='{{ url_for("edit_facture",id=row.id) }}'
+                    class='btn btn-info'>Modifier</a>
+            </td>
+            <td>
+                <a onclick="return confirm('Confirmez la suppression.')" href='{{ url_for("facture_delete",id=row.id) }}'
+                    class='btn btn-danger'>Supprimer<a/>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

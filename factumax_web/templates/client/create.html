@@ -1,0 +1,25 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='col-md-6 mx-auto border rounded-lg'>
+    <p class='mx-auto'>
+        <h3  >Créer un client</h3>
+    </p>
+    <hr class="divider bg-white">
+    <form method='post' autocomplete='off'>
+        <div class='form-group'>
+            <label>Nom</label>
+            <input required type='text' class='form-control form-control-sm' name='nom'>
+        </div>
+        <div class='form-group'>
+            <label>Prénoms</label>
+            <input required type='text' class='form-control form-control-sm' name='prenom'>
+        </div>
+        <div class='form-group'>
+            <label>Email</label>
+            <input required type='email' class='form-control form-control-sm' name='email'>
+        </div>
+        <input required type='submit' name='submit' value='Valider' class='btn mt-4 w-100 btn-success'>
+    </form>
+</div>
+{% endblock %}
+            

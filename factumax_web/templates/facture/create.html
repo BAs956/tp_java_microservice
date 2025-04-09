@@ -1,0 +1,22 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='col-md-6 mx-auto mx-auto border rounded-lg'>
+    <p class='mx-auto '>
+        <h3  >Créer une facture</h3>
+    </p>
+    <hr class="divider">
+    <form method='post' autocomplete='off'>
+        <div class=''>
+            <label>Client</label>
+            <select class="form-control text-dark form-control-sm" required name="client_id">
+                <option selected disabled value="">[CHOISIR CLIENT]</option>
+                {% for row in clients %}
+                    <option value="{{ row.id }}">{{ row.nom }} {{ row.prenom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input required type='submit' name='submit' value='Valider' class='btn mt-4 w-100 btn-success'>
+    </form>
+</div>
+{% endblock %}
+            

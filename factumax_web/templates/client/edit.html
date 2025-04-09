@@ -1,0 +1,24 @@
+{% extends '_layout.html' %}
+{% block body %}
+<div class='col-md-6 mx-auto mx-auto border rounded-lg'>
+    <p class='mx-auto '>
+        <h3>Modifier ce client</h3>
+    </p>
+    <hr class="divider bg-white">
+    <form method='post' autocomplete='off'>
+        <div class='form-group'>
+            <label>Nom</label>
+            <input required type='text' class='form-control form-control-sm' name='nom' value='{{ data.nom }}'>
+        </div>
+        <div class='form-group'>
+            <label>Prénoms</label>
+            <input required type='text' class='form-control form-control-sm' name='prenom' value='{{ data.prenom }}'>
+        </div>
+        <div class='form-group'>
+            <label>Email</label>
+            <input required type='email' class='form-control form-control-sm' name='email' value='{{ data.email }}'>
+        </div>
+        <input required type='submit' name='submit' value='Modifier' class='btn mt-4 w-100 btn-warning text-white'>
+    </form>
+</div>
+{% endblock %}
